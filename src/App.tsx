@@ -3,6 +3,7 @@ import { FunFacts, PlaceList, StatTiles, WorldMap } from '@danmat/waypoints-ui';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { WorkerResponse } from './aggregate.worker.js';
 import { Logo } from './Logo.js';
+import { ShareCard } from './ShareCard.js';
 
 type Status = 'idle' | 'working' | 'done' | 'error';
 
@@ -13,6 +14,8 @@ export function App() {
 	const [dragging, setDragging] = useState(false);
 	const workerRef = useRef<Worker | null>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
+	const cardRef = useRef<HTMLDivElement>(null);
+	const [sharing, setSharing] = useState(false);
 
 	useEffect(() => {
 		if (typeof Worker === 'undefined') return; // e.g. jsdom in tests
@@ -60,6 +63,32 @@ export function App() {
 		setError('');
 	};
 
+	const share = useCallback(async () => {
+		if (!cardRef.current) return;
+		setSharing(true);
+		try {
+			const { domToBlob } = await import('modern-screenshot');
+			const blob = await domToBlob(cardRef.current, { scale: 2 });
+			if (!blob) throw new Error('Could not render the image.');
+			const file = new File([blob], 'my-travels.png', { type: 'image/png' });
+			if (navigator.canShare?.({ files: [file] })) {
+				await navigator.share({ files: [file], title: 'My travel log', text: 'Made with droppin' });
+			} else {
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.href = url;
+				a.download = 'my-travels.png';
+				a.click();
+				URL.revokeObjectURL(url);
+			}
+		} catch (err) {
+			// User cancelled the share sheet, or rendering failed — ignore silently.
+			if (err instanceof Error && err.name === 'AbortError') return;
+		} finally {
+			setSharing(false);
+		}
+	}, []);
+
 	return (
 		<div className="app">
 			<header className="topbar">
@@ -86,14 +115,22 @@ export function App() {
 								Everything below was computed in your browser. Nothing was uploaded.
 							</p>
 						</div>
-						<button type="button" className="btn" onClick={reset}>
-							Start over
-						</button>
+						<div className="results-actions">
+							<button type="button" className="btn" onClick={share} disabled={sharing}>
+								{sharing ? 'Generating…' : 'Share my map'}
+							</button>
+							<button type="button" className="btn btn-ghost" onClick={reset}>
+								Start over
+							</button>
+						</div>
 					</div>
 					<StatTiles stats={data.stats} />
 					<WorldMap places={data.places} />
 					<FunFacts stats={data.stats} />
 					<PlaceList places={data.places} />
+					<div className="sharecard-holder" aria-hidden="true">
+						<ShareCard ref={cardRef} data={data} />
+					</div>
 				</main>
 			) : (
 				<main className="landing">

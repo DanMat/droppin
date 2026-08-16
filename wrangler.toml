@@ -1,0 +1,8 @@
+# Droppin is a fully static, client-side app — deployed as an assets-only
+# Cloudflare Worker (no server code). `pnpm deploy` builds then `wrangler deploy`.
+name = "droppin"
+compatibility_date = "2025-08-01"
+
+[assets]
+directory = "./dist"
+not_found_handling = "single-page-application"

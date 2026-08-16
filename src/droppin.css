@@ -199,3 +199,130 @@
 	color: var(--accent);
 	text-decoration: none;
 }
+
+/* Share actions */
+.results-actions {
+	display: flex;
+	gap: 0.6rem;
+	flex-shrink: 0;
+}
+.btn-ghost {
+	background: transparent;
+	color: var(--ink);
+	border: 1px solid var(--border);
+}
+.btn-ghost:hover {
+	background: var(--surface);
+	border-color: var(--accent);
+}
+.btn:disabled {
+	opacity: 0.6;
+	cursor: default;
+}
+
+/* Off-screen share card (rasterised to PNG) */
+.sharecard-holder {
+	position: fixed;
+	left: -99999px;
+	top: 0;
+	pointer-events: none;
+}
+.sharecard {
+	width: 1080px;
+	padding: 48px;
+	border-radius: 24px;
+	/* always-dark, self-contained tokens so the exported image is consistent */
+	--ground: #0c1016;
+	--surface: #151b24;
+	--surface-2: #1b2330;
+	--ink: #e7edf4;
+	--muted: #97a3b2;
+	--border: #29323f;
+	--accent: #5a97ff;
+	--accent-soft: rgba(90, 151, 255, 0.14);
+	--ocean: #121a25;
+	--land: #26313f;
+	--accent-hi: #8cc0ff;
+	--accent-lo: #2f6fe0;
+	background: var(--ground);
+	color: var(--ink);
+	font-family: var(--font-sans);
+}
+.sc-head {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	margin-bottom: 32px;
+}
+.sc-logo {
+	height: 44px;
+	width: auto;
+}
+.sc-brand {
+	font-weight: 750;
+	font-size: 2rem;
+	letter-spacing: -0.03em;
+}
+.sc-sep {
+	color: var(--muted);
+	font-size: 1.6rem;
+}
+.sc-title {
+	font-family: var(--font-mono);
+	font-size: 1.3rem;
+	color: var(--muted);
+	letter-spacing: 0.02em;
+}
+.sc-stats {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	margin-bottom: 28px;
+}
+.sc-stat {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 16px;
+	padding: 24px;
+}
+.sc-n {
+	font-size: 3.4rem;
+	font-weight: 720;
+	letter-spacing: -0.03em;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+}
+.sc-n small {
+	font-size: 1.3rem;
+	color: var(--muted);
+	font-weight: 500;
+}
+.sc-n.hl {
+	color: var(--accent);
+}
+.sc-k {
+	font-family: var(--font-mono);
+	font-size: 0.95rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--muted);
+	margin-top: 10px;
+}
+.sc-map {
+	margin-bottom: 28px;
+}
+.sc-foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+.sc-dist {
+	font-size: 1.5rem;
+	font-weight: 640;
+}
+.sc-url {
+	font-family: var(--font-mono);
+	font-size: 1.1rem;
+	color: var(--accent);
+}
