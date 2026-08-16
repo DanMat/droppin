@@ -1,0 +1,12 @@
+/* TEAM */
+Built by: DanMat
+Site: https://droppinmap.com
+Source: https://github.com/DanMat/droppin
+
+/* BUILT WITH */
+@danmat/waypoints-core + @danmat/waypoints-ui
+GeoNames (cities) · OurAirports · Cloudflare Workers
+
+/* NOTE */
+📍 drop a pin, see where you've been.
+Everything runs in your browser — your location data never left this device. Promise. 💙
