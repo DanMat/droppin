@@ -26,3 +26,8 @@ npm-debug.log*
 !.vscode/settings.json
 !.vscode/extensions.json
 .idea/
+
+# generated datasets (rebuild with `pnpm prep:data`) + raw location data
+public/data/
+.tmp-data/
+*.timeline.json
