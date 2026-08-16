@@ -1,0 +1,61 @@
+{
+  "name": "droppin",
+  "version": "0.0.0",
+  "description": "Drop your Google Timeline export, get your travel map + stats — 100% in your browser. Powered by @danmat/waypoints-core.",
+  "homepage": "https://github.com/DanMat/droppin#readme",
+  "bugs": {
+    "url": "https://github.com/DanMat/droppin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanMat/droppin.git"
+  },
+  "license": "MIT",
+  "author": "DanMat",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "clean": "rimraf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write .",
+    "prepare": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "biome check --write --no-errors-on-unmatched"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "jsdom": "^29.0.0",
+    "lint-staged": "^16.2.0",
+    "rimraf": "^6.0.0",
+    "simple-git-hooks": "^2.11.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.0",
+    "vitest": "^4.0.0"
+  },
+  "private": true
+}
