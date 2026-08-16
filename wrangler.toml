@@ -1,6 +1,8 @@
-# Droppin is a fully static, client-side app — deployed as an assets-only
-# Cloudflare Worker (no server code). `pnpm deploy` builds then `wrangler deploy`.
+# Droppin: a static client-side app served by a thin Worker that adds a few
+# vanity redirects (/gh, /example) + canonical www→apex. `pnpm deploy` builds
+# then `wrangler deploy`.
 name = "droppin"
+main = "src/worker.ts"
 compatibility_date = "2025-08-01"
 workers_dev = true # keep droppin.danmat.workers.dev alive as a fallback
 
@@ -13,4 +15,5 @@ routes = [
 
 [assets]
 directory = "./dist"
-not_found_handling = "404-page" # serves /404.html for unknown paths
+binding = "ASSETS" # so the Worker can serve static files
+not_found_handling = "404-page" # /404.html for unknown paths (via env.ASSETS.fetch)
