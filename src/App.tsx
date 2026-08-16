@@ -115,14 +115,6 @@ export function App() {
 							<p className="muted">
 								Everything below was computed in your browser. Nothing was uploaded.
 							</p>
-							<input
-								className="name-input"
-								type="text"
-								value={name}
-								maxLength={24}
-								placeholder="Your name — for the share image (optional)"
-								onChange={(e) => setName(e.target.value)}
-							/>
 						</div>
 						<div className="results-actions">
 							<button type="button" className="btn" onClick={share} disabled={sharing}>
@@ -133,6 +125,14 @@ export function App() {
 							</button>
 						</div>
 					</div>
+					<input
+						className="name-input"
+						type="text"
+						value={name}
+						maxLength={24}
+						placeholder="Your name — for the share image (optional)"
+						onChange={(e) => setName(e.target.value)}
+					/>
 					<StatTiles stats={data.stats} />
 					<WorldMap places={data.places} />
 					<FunFacts stats={data.stats} />

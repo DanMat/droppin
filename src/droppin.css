@@ -356,18 +356,19 @@
 	}
 }
 
-/* Optional name for the share image */
+/* Optional name for the share image — own row, full-width up to a sensible cap */
 .name-input {
-	margin-top: 0.9rem;
+	display: block;
 	width: 100%;
-	max-width: 340px;
+	max-width: 420px;
+	margin: 0 0 1.5rem;
 	font: inherit;
-	font-size: 0.9rem;
+	font-size: 0.95rem;
 	color: var(--ink);
 	background: var(--surface);
 	border: 1px solid var(--border);
-	border-radius: 8px;
-	padding: 0.5rem 0.75rem;
+	border-radius: 10px;
+	padding: 0.65rem 0.9rem;
 }
 .name-input::placeholder {
 	color: var(--muted);
