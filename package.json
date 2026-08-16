@@ -1,6 +1,7 @@
 {
   "name": "droppin",
   "version": "0.0.0",
+  "packageManager": "pnpm@10.34.5",
   "description": "Drop your Google Timeline export, get your travel map + stats — 100% in your browser. Powered by @danmat/waypoints-core.",
   "homepage": "https://github.com/DanMat/droppin#readme",
   "bugs": {
@@ -30,7 +31,7 @@
     "format": "biome format --write .",
     "prepare": "simple-git-hooks",
     "prep:data": "node scripts/prep-data.mjs",
-    "deploy": "pnpm build && npx --yes wrangler pages deploy dist --project-name droppin"
+    "deploy": "pnpm build && npx --yes wrangler deploy"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
