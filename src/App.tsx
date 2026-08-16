@@ -16,6 +16,7 @@ export function App() {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const cardRef = useRef<HTMLDivElement>(null);
 	const [sharing, setSharing] = useState(false);
+	const [name, setName] = useState('');
 
 	useEffect(() => {
 		if (typeof Worker === 'undefined') return; // e.g. jsdom in tests
@@ -114,6 +115,14 @@ export function App() {
 							<p className="muted">
 								Everything below was computed in your browser. Nothing was uploaded.
 							</p>
+							<input
+								className="name-input"
+								type="text"
+								value={name}
+								maxLength={24}
+								placeholder="Your name — for the share image (optional)"
+								onChange={(e) => setName(e.target.value)}
+							/>
 						</div>
 						<div className="results-actions">
 							<button type="button" className="btn" onClick={share} disabled={sharing}>
@@ -129,7 +138,7 @@ export function App() {
 					<FunFacts stats={data.stats} />
 					<PlaceList places={data.places} />
 					<div className="sharecard-holder" aria-hidden="true">
-						<ShareCard ref={cardRef} data={data} />
+						<ShareCard ref={cardRef} data={data} name={name} />
 					</div>
 				</main>
 			) : (

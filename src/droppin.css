@@ -252,7 +252,14 @@
 	display: flex;
 	align-items: center;
 	gap: 0.6rem;
-	margin-bottom: 32px;
+	margin-bottom: 12px;
+}
+.sc-subtitle {
+	font-family: var(--font-mono);
+	font-size: 1.4rem;
+	color: var(--muted);
+	letter-spacing: 0.02em;
+	margin-bottom: 28px;
 }
 .sc-logo {
 	height: 44px;
@@ -347,4 +354,26 @@
 	.results-head h1 {
 		font-size: 1.7rem;
 	}
+}
+
+/* Optional name for the share image */
+.name-input {
+	margin-top: 0.9rem;
+	width: 100%;
+	max-width: 340px;
+	font: inherit;
+	font-size: 0.9rem;
+	color: var(--ink);
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 0.5rem 0.75rem;
+}
+.name-input::placeholder {
+	color: var(--muted);
+}
+.name-input:focus {
+	outline: none;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 2px var(--accent-soft);
 }
