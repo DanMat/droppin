@@ -47,7 +47,7 @@ export const ShareCard = forwardRef<HTMLDivElement, { data: TravelData }>(functi
 				<span className="sc-dist">
 					✈️ {km} km · 🌍 {world}× around the world
 				</span>
-				<span className="sc-url">droppin.danmat.workers.dev</span>
+				<span className="sc-url">droppinmap.com</span>
 			</div>
 		</div>
 	);
