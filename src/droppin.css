@@ -326,3 +326,25 @@
 	font-size: 1.1rem;
 	color: var(--accent);
 }
+
+/* Mobile-first: stack the results header so the title + actions never cramp */
+@media (max-width: 640px) {
+	.topbar {
+		padding: 0.9rem 0;
+	}
+	.results-head {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.9rem;
+	}
+	.results-actions {
+		width: 100%;
+	}
+	.results-actions .btn {
+		flex: 1;
+		padding: 0.75rem 1rem;
+	}
+	.results-head h1 {
+		font-size: 1.7rem;
+	}
+}
