@@ -133,7 +133,7 @@ export function App() {
 						placeholder="Your name — for the share image (optional)"
 						onChange={(e) => setName(e.target.value)}
 					/>
-					<StatTiles stats={data.stats} />
+					<StatTiles data={data} />
 					<WorldMap places={data.places} />
 					<FunFacts stats={data.stats} />
 					<PlaceList places={data.places} />
